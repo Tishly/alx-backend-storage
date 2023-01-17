@@ -1,5 +1,2 @@
 // A command that inserts a new collection in the "school" database
-use my_db
-db.school.insertOne({
-	"name": "Holberton school"
-})
+db.school.insert({"name": "Holberton school"})
