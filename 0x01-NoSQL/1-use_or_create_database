@@ -1,0 +1,2 @@
+// The command to create and switch to a specific database
+use my_db
