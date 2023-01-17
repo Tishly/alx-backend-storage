@@ -1,0 +1,4 @@
+// A command that inserts a new collection in the "school" database
+db.school.insertOne({
+	"name": "Holberton school"
+})
