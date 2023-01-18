@@ -3,6 +3,7 @@
 import redis
 
 Class Cache():
+    """Redis in Python script"""
     def __init__(self):
         _redis = redis.Redis()
         _redis.flushdb
