@@ -1,0 +1,2 @@
+// Regex to find documents starting with name "Holberton"
+db.school.find({"name": {$regex: /^Holberton/}})
