@@ -5,4 +5,4 @@
 
 def update_topics(mongo_collection, name, topics):
     """Updates attributes already in the database"""
-    return mongo_collection.update({"name": name}, {"$set": {"topics": topics}})
+    return mongo_collection.update({"name": name}, {"$set": {"topics": topics}}, {multi: true})
