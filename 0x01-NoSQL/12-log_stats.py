@@ -8,6 +8,8 @@ from mongodb import MongoClient
 with MongoClient as client:
     """Getting log stats from a dump file"""
     logs.nginx.aggregate([
+        { $count: {x: {_id: "$Logs"}}
+            },
         { $group:  {x: {$sum: "logs"}}
             },
         { $match: {method: }
