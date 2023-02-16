@@ -8,5 +8,8 @@ Class Cache():
         _redis = redis.Redis()
         _redis.flushdb
 
-    def store(data):
+    def store(data: Union[str, bytes, int, float]) -> str:
+        """
+        Stores data with random uuid
+        """
         pass
