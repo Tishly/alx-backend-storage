@@ -26,6 +26,8 @@ class Cache():
             return None
         if fn is not None:
             return fn(data)
+        if fn is int:
+            raise ValueError
         if isinstance(data, bytes):
             return data.decode('utf-8')
         return data
