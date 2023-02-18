@@ -22,19 +22,19 @@ class Cache():
     def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, int, bytes, float]:
         """Takes string and converts to desired format"""
         data = self._redis.get(key)
-        if data is None:
-            return None
-        if fn is not None:
-            return fn(data)
-        if fn is int:
-            raise ValueError
-        if isinstance(data, bytes):
-            return data.decode('utf-8')
-        return data
+        if fn:
+            value = fn(data)
+            return data
 
     def get_str(self, key: str) -> Union[str, None]:
-        """Checks that data is a string"""
-        return self.get(key, fn=lambda x: x.decode('utf-8'))
+        """Gets a string from the cache"""
+        return self._redis.get(key, fn=lambda x: x.decode('utf-8'))
 
     def get_int(self, key: str) -> Union[int, None]:
-        return self.get(key, fn=int)
+        """ Get int from the cache"""
+        data = self._redis.get(key)
+        try:
+            data =int(data.decode('utf-8'))
+        except Exception:
+            data = 0
+        return data
